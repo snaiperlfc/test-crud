@@ -32,9 +32,10 @@ class TestCrudApplicationTests {
         mockMvc.perform(get("/api/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$", hasSize(3)))
                 .andExpect(jsonPath("$[0].name", is("Иван")))
-                .andExpect(jsonPath("$[1].name", is("Надежда")));
+                .andExpect(jsonPath("$[1].name", is("Игорь")))
+                .andExpect(jsonPath("$[2].name", is("Надежда")));
     }
 
 
