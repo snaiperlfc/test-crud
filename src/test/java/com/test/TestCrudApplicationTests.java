@@ -40,12 +40,12 @@ class TestCrudApplicationTests {
 
     @Test
     void testCreate() throws Exception {
-        User employee = new User("Игорь", 35);
-        String employeeJson = objectMapper.writeValueAsString(employee);
+        User user = new User("Игорь", 35);
+        String userJson = objectMapper.writeValueAsString(user);
 
         mockMvc.perform(post("/api/users")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(employeeJson))
+                        .content(userJson))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.name", is("Игорь")))
@@ -54,12 +54,12 @@ class TestCrudApplicationTests {
 
     @Test
     void testUpdate() throws Exception {
-        User employee = new User("Иван", 40);
-        String employeeJson = objectMapper.writeValueAsString(employee);
+        User user = new User("Иван", 40);
+        String userJson = objectMapper.writeValueAsString(user);
 
         mockMvc.perform(put("/api/users/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(employeeJson))
+                        .content(userJson))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.name", is("Иван")))
